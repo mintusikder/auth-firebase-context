@@ -2,25 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-
-
-
   const handelLogin = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
-    console.log(email,password)
- 
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
   };
-
-
 
   return (
     <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col md:flex-row-reverse">
-        <div className="text-center lg:text-left">
+      <div className="hero-content flex-col ">
+        <div className="text-center ">
           <h1 className="text-5xl font-bold">Login now!</h1>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -58,9 +52,14 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <Link to="/register">
-          <button  className="btn btn-link">New Account Register</button>
-          </Link>
+          <p className="mb-4 ml-8">
+            {" "}
+            <Link to="/register">
+              <button className="label-text-alt link link-hover">
+                New Account Register
+              </button>
+            </Link>
+          </p>
         </div>
       </div>
     </div>
