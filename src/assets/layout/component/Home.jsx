@@ -19,8 +19,8 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Home = () => {
-    const {user} = useContext(AuthContext)
-    console.log(user)
+    const {user,createUser} = useContext(AuthContext)
+    console.log(createUser)
     return (
         <div>
             <h2>Name: {user&& <span>{user.displayName}</span>}</h2>
