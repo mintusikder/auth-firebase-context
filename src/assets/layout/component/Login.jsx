@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
 
-  const {signIn} = useContext(AuthContext)
+  const {signIn,signinWithGoogle} = useContext(AuthContext)
 
   const handelLogin = (event) => {
     event.preventDefault();
@@ -24,6 +24,15 @@ const Login = () => {
         console.log(error)
       })
   };
+
+  const handelGoogleSigin = () =>{
+    signinWithGoogle()
+    .then(result =>{
+      const loggedUser = result.user
+      console.log(loggedUser)
+    })
+    .catch(error => console.log(error))
+  }
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -74,6 +83,11 @@ const Login = () => {
               </button>
             </Link>
           </p>
+       
+        <div>
+        <button onClick={handelGoogleSigin} className="btn btn-primary">Google</button>
+        </div>
+    
         </div>
       </div>
     </div>
