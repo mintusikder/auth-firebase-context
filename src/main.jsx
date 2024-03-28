@@ -1,46 +1,50 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Main from './assets/layout/Main.jsx';
-import Home from './assets/layout/component/Home.jsx';
-import Login from './assets/layout/component/Login.jsx';
-import Register from './assets/layout/component/Register.jsx';
-import AuthProvider from './assets/providers/AuthProvider.jsx';
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Main from "./assets/layout/Main.jsx";
+import Home from "./assets/layout/component/Home.jsx";
+import Login from "./assets/layout/component/Login.jsx";
+import Register from "./assets/layout/component/Register.jsx";
+import AuthProvider from "./assets/providers/AuthProvider.jsx";
+import Orders from "./assets/layout/component/Orders.jsx";
+import PrivateRoutes from "./assets/routes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:"/register",
-        element:<Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
-    ]
+      {
+        path: "/order",
+        element: (
+          <PrivateRoutes>
+            <Orders></Orders>
+          </PrivateRoutes>
+        ),
+      },
+    ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-   
     <AuthProvider>
-    <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
-   
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
